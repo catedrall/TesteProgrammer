@@ -1,0 +1,83 @@
+﻿@model RSBrasil.Model.DTOs.TipoAfastamentosDTO
+
+@{
+    ViewData["Title"] = "Novo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Afastamentos</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Novo afastamento
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form asp-action="Novo">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                @*<div class="form-group">
+                                    <label asp-for="Descricao" class="control-label"></label>
+                                    <input asp-for="Descricao" class="form-control" />
+                                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                                </div>*@
+                                
+                                <div class="form-group">
+                                    <label asp-for="Descricao" class="control-label"></label>
+                                    @Html.DropDownList("Descricao", ViewBag.DocsList as SelectList, new { @class = "form-control" })
+                                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label asp-for="DataInicio" class="control-label"></label>
+                                    <input asp-for="DataInicio" class="form-control" />
+                                    <span asp-validation-for="DataInicio" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Duracao" class="control-label"></label>
+                                    <input asp-for="Duracao" class="form-control" />
+                                    <span asp-validation-for="Duracao" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="DataFim" class="control-label"></label>
+                                    <input asp-for="DataFim" class="form-control" readonly />
+                                    <span asp-validation-for="DataFim" class="text-danger"></span>
+                                </div>
+
+                                <button type="submit" class="btn btn-success">Salvar</button>
+                                @Html.ActionLink("Cancelar", "Index", "HistoricoFaltas", null, new { @class = "btn btn-danger" })
+                            </form>
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->
+@section Scripts {
+    <script src="~/vendor/mascara/jquery.mask.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#DataInicio').mask('00/00/0000');
+            $('#DataFim').mask('00/00/0000');
+        });
+    </script>
+}

@@ -1,0 +1,32 @@
+﻿@model List<RSBrasil.Model.Entidades.Uniforme>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="center">Descri~ção</th>
+            <th class="center">Data compra</th>
+            <th class="center">Duração</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duracao)
+            </td>
+            <td class="center">
+                <i class="fa fa-pencil"></i>&nbsp;<i class="fa fa-trash-o"></i>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
